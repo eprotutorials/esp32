@@ -129,11 +129,11 @@ static void gatts_profile_rgb_event_handler(esp_gatts_cb_event_t event, esp_gatt
         create_rgb_service(gatts_if);
         break;
     case ESP_GATTS_READ_EVT: {
-        ESP_LOGI(RGB_TAG, "GATT_READ_EVT, conn_id %d, trans_id %d, handle %d\n", param->read.conn_id, param->read.trans_id, param->read.handle);
+        ESP_LOGI(RGB_TAG, "GATT_READ_EVT, conn_id %d, trans_id %lu, handle %d\n", param->read.conn_id, param->read.trans_id, param->read.handle);
         break;
     }
     case ESP_GATTS_WRITE_EVT: {
-        ESP_LOGI(RGB_TAG, "GATT_WRITE_EVT, conn_id %d, trans_id %d, handle %d", param->write.conn_id, param->write.trans_id, param->write.handle);
+        ESP_LOGI(RGB_TAG, "GATT_WRITE_EVT, conn_id %d, trans_id %lu, handle %d", param->write.conn_id, param->write.trans_id, param->write.handle);
         if (!param->write.is_prep){
             ESP_LOGI(RGB_TAG, "GATT_WRITE_EVT, value len %d, value :", param->write.len);
             esp_log_buffer_hex(RGB_TAG, param->write.value, param->write.len);
